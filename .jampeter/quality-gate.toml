@@ -1,0 +1,23 @@
+version = 1
+profile = "ops-monitor-python"
+
+[report]
+path = ".quality-gate/report.json"
+
+[[gate]]
+id = "compile"
+phase = "type"
+command = "python3 -m compileall -q src tests"
+required = true
+
+[[gate]]
+id = "tests"
+phase = "test"
+command = "python3 -m unittest discover -s tests -v"
+required = true
+
+[[gate]]
+id = "example-json"
+phase = "lint"
+command = "python3 -m json.tool examples/config.json >/dev/null"
+required = true
