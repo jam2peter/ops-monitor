@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "checks": [
+    {
+      "id": "prometheus-targets",
+      "name": "Prometheus targets",
+      "group": "runtime",
+      "query": "min(up)",
+      "operator": ">=",
+      "threshold": 1,
+      "reducer": "first",
+      "fail_status": "DEGRADED",
+      "missing_status": "UNKNOWN"
+    }
+  ]
+}
